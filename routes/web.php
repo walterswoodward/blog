@@ -14,12 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-    return view('posts');
+    $posts = Post::all();
+    return view('posts', ['posts' => Post::all()]);
 });
 
 // curly braces indicate a wild card value
