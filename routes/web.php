@@ -22,8 +22,8 @@ Route::get('/', function () {
 });
 
 // curly braces indicate a wild card value
-Route::get('posts/{post}', function ($slug) {
-    $post = file_get_contents(__DIR__ . '/../resources/posts/'.$slug.'.html');
+Route::get('posts/{id}', function ($id) {
+    $post = file_get_contents(__DIR__ . '/../resources/posts/'.$id.'.html');
     return view('post', [
         'post' => $post
     ]);
