@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 // curly braces indicate a wild card value
-Route::get('posts/{id}', function ($id) {
+Route::get('posts/{post}', function ($id) {
     $path = __DIR__ . '/../resources/posts/'.$id.'.html';
 
     if (!file_exists($path)) {
@@ -31,17 +31,19 @@ Route::get('posts/{id}', function ($id) {
         // dd('file does not exist');
     
         // dump, die, and debug
-        // ddd('file does not exist');
+        ddd('file does not exist');
     
         // throw laravel 404
         // abort(404);
     
         // redirect to homepage
-        return redirect('/');
+        // return redirect('/');
     }
 
     $post = file_get_contents($path);
     return view('post', [
         'post' => $post
     ]);
-});
+})->whereNumber('post');
+// The above is a shorthand for below. See more here: https://laravel.com/api/8.x/Illuminate/Routing/Route.html
+// })->where('post', '[0-9]+');
