@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/app.css">
 </head>
 <body>
-    <h1><?= $post->title; ?></h1>
-    <div><?= $post->body; ?></div>
+    <h1>{{ $post->title }}</h1>
+    <p>{{ $post->body }}</p>
     <a href="/">Go Back</a>
 </body>
