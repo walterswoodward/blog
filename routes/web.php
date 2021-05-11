@@ -19,9 +19,6 @@ Route::get('/', function () {
     return view('posts', ['posts' => Post::all()]);
 });
 
-// curly braces indicate a wild card value
 Route::get('posts/{post}', function ($slug) {
-    // 1. Find a post by its slug
-    // 2. Pass it to a view called "post"
     return view('post', ['post' => Post::find($slug)]);
 })->whereNumber('post');
