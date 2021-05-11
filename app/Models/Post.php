@@ -74,7 +74,8 @@ class Post
                     $document->body(),
                     $document->slug
                 );
-            });
+            })
+            ->sortByDesc('date');
     }
     
     public static function find($slug)
