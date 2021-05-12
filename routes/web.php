@@ -2,6 +2,8 @@
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Log\Logger;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts', ['posts' => Post::all()]);
+    // One way to use native framework tools to view queries:
+    // \Illuminate\Support\Facades\DB::listen(function ($query){logger($query->sql, $query->bindings);});
+
+    // Another way:
+    // DB::enableQueryLog();
+    // Post::with('category')->get();
+    // $queries = DB::getQueryLog();
+    // dd($queries);
+
+    return view('posts', ['posts' => Post::with('category')->get()]);
 });
 
 Route::get('posts/{post}', function (Post $post) { // Post::where('slug', $post)->firstOrFail()
