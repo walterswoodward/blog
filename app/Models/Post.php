@@ -9,8 +9,16 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $guarded = []; // **LOCAL DEVELOPMENT ONLY**
+
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function category()
+    {
+        // hasOne, hasMany, belongsTo, belongsToMany
+        return $this->belongsTo(Category::class); 
     }
 }
