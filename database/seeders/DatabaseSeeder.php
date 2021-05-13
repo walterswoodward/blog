@@ -22,12 +22,17 @@ class DatabaseSeeder extends Seeder
         // Post::truncate();
 
         // Create a fake user with the name "Walter Woodward"
-        $user = User::factory()->create([
-            'name' => 'Walter Woodward'
+        // $user = User::factory()->create([
+        //     'name' => 'Walter Woodward'
+        // ]);
+
+        $category = Category::factory()->create([
+            'name' => 'Travel',
+            'slug' => 'travel'
         ]);
 
         Post::factory(5)->create([
-            'user_id' => $user->id
+            'category_id' => $category->id
         ]);
 
         // // Manual Seeding Approach:
